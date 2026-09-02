@@ -1,0 +1,49 @@
+# Dependency directories
+node_modules/
+**/node_modules/
+
+# Production build outputs
+dist/
+**/dist/
+build/
+
+# Environment and secret files
+.env
+.env.local
+.env.*.local
+*.env
+backend/.env
+
+# Log files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# User uploads, temporary storage, and local dumps
+uploads/*
+!uploads/.gitkeep
+backend/uploads/*
+!backend/uploads/.gitkeep
+temp/
+tmp/
+dump/
+
+# Editor & OS system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Diagnostic & Test reports
+coverage/
+.nyc_output/
