@@ -6,7 +6,7 @@ const User = require("../../models/User");
 // POST /api/classroom/posts
 const createPost = async (req, res) => {
   try {
-    const { classroom_id, title, content, type, due_date, total_points } = req.body;
+    const { classroom_id, title, content, type, due_date, total_points } = ;
     const fileUrl = req.file ? `/uploads/${req.file.filename}` : null;
     const fileName = req.file ? req.file.originalname : null;
 

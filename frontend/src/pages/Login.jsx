@@ -2,6 +2,24 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
+const DEMO_ACCOUNTS = [
+  {
+    role: "Admin",
+    email: "admin@campusone.com",
+    password: "admin@campusone#",
+  },
+  {
+    role: "Faculty",
+    email: "rajesh.sharma@campusone.com",
+    password: "rajesh@10041975#",
+  },
+  {
+    role: "Student",
+    email: "aarav.patel@campusone.com",
+    password: "aarav@15032004#",
+  },
+];
+
 /**
  * Login — Production-grade split-screen login page with quick role chips.
  */
@@ -15,6 +33,12 @@ export default function Login() {
 
   const { login } = useAuth();
   const navigate = useNavigate();
+
+  const fillDemoAccount = (account) => {
+    setEmail(account.email);
+    setPassword(account.password);
+    setError("");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -169,6 +193,34 @@ export default function Login() {
               )}
             </button>
           </form>
+
+          <section aria-labelledby="demo-accounts-heading" className="border-t border-slate-800 pt-5">
+            <div className="flex items-center justify-between gap-3 mb-3">
+              <h3 id="demo-accounts-heading" className="text-xs font-semibold text-slate-300">
+                Seeded development accounts
+              </h3>
+              <span className="text-[11px] text-slate-500">Select to fill</span>
+            </div>
+            <div className="space-y-2">
+              {DEMO_ACCOUNTS.map((account) => (
+                <button
+                  key={account.role}
+                  type="button"
+                  onClick={() => fillDemoAccount(account)}
+                  className="w-full rounded-lg border border-slate-800 bg-slate-950/40 px-3 py-2.5 text-left transition-colors hover:border-indigo-500/50 hover:bg-indigo-500/5 focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-xs font-semibold text-indigo-300">{account.role}</span>
+                    <span className="text-[10px] font-medium text-slate-500">Use this account</span>
+                  </div>
+                  <div className="mt-1 grid gap-0.5 text-[11px] leading-4 sm:grid-cols-[1fr_auto] sm:gap-x-3">
+                    <span className="font-mono text-slate-300 break-all">{account.email}</span>
+                    <span className="font-mono text-slate-400 break-all">{account.password}</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </section>
         </div>
       </div>
     </div>
